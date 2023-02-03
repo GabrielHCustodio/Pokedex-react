@@ -1,30 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Pokemon from "./components/Pokemon"
+import Header from "./components/Header";
+import Details from "./pages/Details";
+import Pokemons from "./pages/Pokemons";
 
 function App() {
-  const [pokemons, setPokemons] = useState([])
+  const handleOrdenation = (value) => {
+    console.log(value);
+  };
 
-  useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0')
-    .then(response => response.json())
-    .then(data => {
-      setPokemons(data.results)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }, [])
+  const handleSearch = (value) => {
+    console.log(value);
+  };
 
-  return ( 
-  <div>
-    <h1>Pokedex</h1>
+  return (
     <div>
-    {pokemons.map((pokemon) => (
-      <Pokemon pokemon={pokemon} key={pokemon}/>
-    ))}
+      <Router>
+        <Header ordenation={handleOrdenation} search={handleSearch} />
+        <Routes>
+          <Route path="/" element={<Pokemons />} />
+          <Route path="/details/:name" element={<Details />} />
+        </Routes>
+      </Router>
     </div>
-  </div>
   );
 }
 
