@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./PokemonCard.module.css";
+import "../styleBg/Bg.css"
 
 const PokemonCard = ({ pokemon }) => {
   const [name, setName] = useState();
@@ -28,9 +29,9 @@ const PokemonCard = ({ pokemon }) => {
   }
 
   return (
-    <div className={`${styles.card} ${styles[type]}`} onClick={handleClickPokemon}>
+    <div className={`${styles.card} ${[type]}`} onClick={handleClickPokemon}>
       <img src={image} alt={name} />
-      <p>{name}</p>
+      <p className={styles.name}>{name}</p>
     </div>
   );
 };

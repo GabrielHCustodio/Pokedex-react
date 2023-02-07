@@ -1,0 +1,12 @@
+.type {
+    margin-top: 10px;
+}
+
+.type p {
+    font-size: 18px;
+}
+
+.type p span {
+    font-weight: bold;
+    font-size: 18px;
+}
